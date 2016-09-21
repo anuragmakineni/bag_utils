@@ -11,8 +11,8 @@ odom_z = np.empty((0))
 vel_z = np.empty((0))
 initial_time = 0.0
 
-bag = rosbag.Bag('/home/anuragmakineni/run3.bag')
-topic = '/vicon/am_bungee/odom'
+bag = rosbag.Bag('./drop.bag')
+topic = '/vicon/bungee/odom'
 
 for topic, msg, t in bag.read_messages(topics=[topic]):
     odom_z = np.append(odom_z, msg.pose.pose.position.z)
