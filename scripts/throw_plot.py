@@ -31,6 +31,7 @@ plt.grid(1)
 plt.title('Z Position vs. Time')
 plt.xlabel('Time (s)')
 plt.ylabel('Height (m)')
+plt.xlim([0.0, np.max(time)])
 
 #vel
 fig = plt.figure()
@@ -39,9 +40,10 @@ plt.grid(1)
 plt.title('Z Velocity vs. Time')
 plt.xlabel('Time (s)')
 plt.ylabel('Vertical Velocity (m/s)')
+plt.xlim([0.0, np.max(time)])
 
 #acc
-acc_z = np.divide(np.diff(vel_z), np.diff(time))
+acc_z = np.divide(np.diff(vel_z), np.diff(time))/9.81 + 1.0
 acc_t = time[:-1]
 
 #filter
@@ -54,9 +56,9 @@ y = signal.lfilter(h, 1.0, np.vstack((acc_t, acc_z)))
 fig = plt.figure()
 plt.plot(y[0,:], y[1,:])
 plt.grid(1)
-plt.title('Z Acceleration vs. Time')
+plt.title('Inerial Z Acceleration vs. Time')
 plt.xlabel('Time (s)')
-plt.ylabel('Z Acceleration (m/s^2)')
-
+plt.ylabel('Z Acceleration (G)')
+plt.xlim([0.0, np.max(time)])
 plt.show()
 bag.close()
