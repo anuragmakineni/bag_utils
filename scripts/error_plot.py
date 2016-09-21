@@ -6,8 +6,12 @@ import rospy
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+
+
 #get bag data
 robots = ['/pico03/', '/pico04/', '/pico05/']
+path = '/home/anuragmakineni/Desktop/cc_1.bag'
+
 start_index = 1433
 end_index = 2604
 
@@ -27,7 +31,7 @@ for robot in robots:
     time = np.empty((0))
     time_pos = np.empty((0))
 
-    bag = rosbag.Bag('/home/anuragmakineni/Desktop/cc_1.bag')
+    bag = rosbag.Bag(path)
     topic = robot + 'odom'
 
     for topic, msg, t in bag.read_messages(topics=[topic]):
