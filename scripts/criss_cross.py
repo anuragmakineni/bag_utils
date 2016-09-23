@@ -2,11 +2,11 @@
 import rosbag
 import matplotlib
 matplotlib.use('Qt4Agg')
+matplotlib.rcParams.update({'font.size': 17})
 import rospy
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-
 
 #get bag data
 robots = ['/pico03/', '/pico04/', '/pico05/']
@@ -91,7 +91,7 @@ for tup in est_idx:
         robot_radius = 0.067
         ax = plt.gca()
         ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
-                            fancybox=True, shadow=True, ncol=5)
+                  fancybox=True, shadow=True, ncol=5, prop={'size':15})
         ax.set_aspect('equal', 'datalim')
 plt.show()
 bag.close()
